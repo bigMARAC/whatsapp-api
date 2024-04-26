@@ -262,7 +262,7 @@ const initializeEvents = (client, sessionId) => {
   checkIfEventisEnabled('message_create')
     .then(_ => {
       client.on('message_create', async (message) => {
-        triggerWebhook(sessionWebhook, sessionId, 'message_create', { message })
+        triggerWebhook(sessionWebhook + '/message', sessionId, 'message_create', { message })
         if (setMessagesAsSeen) {
           const chat = await message.getChat()
           chat.sendSeen()
